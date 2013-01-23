@@ -2,7 +2,6 @@
 This is a simple HashTable implementation in C++.
 
 ## Objective:
----------------
 * Implement the following functions with the specified constraints:
 	* **void insert(string key, string value)**
 		1. Insert the value in the correct bucket based on the hash of the key
