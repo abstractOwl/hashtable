@@ -1,4 +1,5 @@
 #include <cmath>
+#include <iostream>
 #include <string>
 #include "HashTable.h"
 
@@ -58,6 +59,7 @@ void HashTable::insert(std::string key, std::string value)
 {
 	// @@TODO: Fill in function body
 	// REMEMBER TO SET entry->next TO NULL
+	int pos = indexOf(key);
 }
 /**
  * Removes a specified string from the HashTable
@@ -65,23 +67,20 @@ void HashTable::insert(std::string key, std::string value)
 void HashTable::remove(std::string key)
 {
 	Entry*	curr;
-	int	pos;
-
-	// @@TODO: Fill in function body
-	pos = indexOf(key); // Locate key in array
+	int	pos	=	indexOf(key); // Locate key in array
 	
 	if (pos == -1) { // key not found!
-		cout << "item not found!"
+		std::cout << "item not found!";
 	}
 
 	curr = &entries[pos];
 
 	// Remove Entry containing key from array
-	if (curr->value == key) {
-		entries[pos] = &curr->next;
+	if (curr->key == key) {
+		entries[pos] = *(curr->next);
 	} else {
-		while (curr != null) {
-			if (curr->next->string == key) {
+		while (curr != NULL) {
+			if (curr->next->key == key) {
 				curr->next = curr->next->next;
 				break;
 			}
@@ -98,8 +97,8 @@ void HashTable::remove(std::string key)
 std::string* HashTable::find(std::string key)
 {
 	Entry*	curr	=	NULL;
-	int	hash	=	str2hash(key),
-		pos;
+	int		hash	=	str2hash(key),
+			pos;
 
 	pos = indexOf(key); // Locate key in array
 	
@@ -108,9 +107,9 @@ std::string* HashTable::find(std::string key)
 	curr = &entries[pos];
 
 	// Search for key
-	while (curr != null) {
-		if (curr->string == key) {
-			return curr;
+	while (curr != NULL) {
+		if (curr->key == key) {
+			return &curr->value;
 		}
 		curr = curr->next;
 	}

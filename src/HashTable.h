@@ -5,8 +5,10 @@
  * which contains the value of the entry, and "next", which holds a reference
  * to another value with the same hash if there is one.
  */
+typedef struct Entry Entry;
 struct Entry
 {
+	std::string	key;
 	std::string	value;
 	int			hash;
 	Entry*		next;
