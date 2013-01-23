@@ -75,6 +75,7 @@ std::string* HashTable::find(std::string key)
 		}
 		curr = curr->next;
 	}
+	std::cout << "item not found" << std::endl;
 	return NULL;
 }
 
