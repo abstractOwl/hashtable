@@ -6,7 +6,7 @@ This is a simple HashTable implementation in C++.
 	* **void insert(string key, string value)**
 		1. Insert the value in the correct bucket based on the hash of the key
 		2. If the insertion is successful, print "item successfully inserted" to the standard output. Otherwise, print "item already present"
-	* **void delete(string key)**
+	* **void remove(string key)**
 		1. Delete the corresponding item based on the key
 		2. Print either "item successfully deleted" or "item not present in the table" to the standard output
 	* **string\* find(string key)**

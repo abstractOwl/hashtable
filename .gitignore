@@ -1,3 +1,4 @@
 UnitTest++/
 *.swp
 a.out
+*.gch
