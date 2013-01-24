@@ -19,7 +19,7 @@ public:
 	void			remove(std::string key);
 	std::string*	find(std::string key);
 private:
-	Entry			*entries[100]; // Array holding pointers to Entry items
+	Entry*			entries[100]; // Array holding pointers to Entry items
 	int				size;
 	int				str2hash(std::string str);
 };

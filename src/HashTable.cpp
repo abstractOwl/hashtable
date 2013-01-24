@@ -1,10 +1,14 @@
 #include <cmath>
 #include <iostream>
+#include <cstring>
 #include <string>
 #include "HashTable.h"
 
 // Constructor
-HashTable::HashTable() {}
+HashTable::HashTable()
+{
+	memset(entries, 0, sizeof(entries)); // Zero out all entries of array
+}
 
 // Private functions
 
@@ -18,9 +22,12 @@ int HashTable::str2hash(std::string str)
 // Adds a specified string to the HashTable
 void HashTable::insert(std::string key, std::string value)
 {
+	Entry *curr;
 	int hash	=	str2hash(key);
 
-	if (find(key) == NULL) {
+	curr = entries[hash];
+
+	if (curr == NULL) {
 		// Construct new Entry
 		Entry *entry	=	new Entry;
 		entry->key		=	key;
@@ -41,18 +48,22 @@ void HashTable::remove(std::string key)
 	int		hash	=	str2hash(key);
 	Entry*	curr = entries[hash];
 
-	// Remove Entry containing key from array
-	if (curr->key == key) { // Key is first
-		entries[hash] = curr->next;
-		found = true;
-	} else {
-		while (curr != NULL) { // Search for key
-			if (curr->next->key == key) {
-				curr->next = curr->next->next; // previousKey->next => nextKey
-				found = true;
-				break;
+	if (entries[hash] != NULL) {
+		// Remove Entry containing key from array
+		if (curr->key == key) { // Key is first
+			entries[hash] = curr->next;
+			delete curr;
+			found = true;
+		} else {
+			while (curr != NULL) { // Search for key
+				if (curr->next->key == key) {
+					curr->next = curr->next->next; // skip current key
+					delete curr;
+					found = true;
+					break;
+				}
+				curr = curr->next;
 			}
-			curr = curr->next;
 		}
 	}
 	std::cout << "item " << (found ? "successfully deleted" :
@@ -67,6 +78,12 @@ std::string* HashTable::find(std::string key)
 
 	curr = entries[hash];
 
+	// Check whether exists
+	if (curr == NULL) {
+		std::cout << "item not found" << std::endl;
+		return NULL;
+	}
+
 	// Search for key
 	while (curr != NULL) {
 		if (curr->key == key) {
@@ -75,7 +92,5 @@ std::string* HashTable::find(std::string key)
 		}
 		curr = curr->next;
 	}
-	std::cout << "item not found" << std::endl;
-	return NULL;
 }
 
