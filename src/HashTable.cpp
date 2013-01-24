@@ -27,7 +27,7 @@ void HashTable::insert(std::string key, std::string value)
 
 	curr = entries[hash];
 
-	if (curr == NULL) {
+	if (find(key) == NULL) {
 		// Construct new Entry
 		Entry *entry	=	new Entry;
 		entry->key		=	key;
