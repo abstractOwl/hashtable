@@ -18,3 +18,4 @@ This is a simple HashTable implementation in C++.
 	* For collision resolution, you should use separate chaining
 	* You don't need to implement resize of hash table. We will tell you the size of the total items that needs to be stored in a hash table. When you make an instance of your hash table class in your main function, you can assume the max total number of items is 100. We will not test your programs with more than 100 items.
 	* You can use std::hash\<std::string\> to calculate the hash value of a string
+	* **From TA**: "You can use the key also as the value. It doesn't matter in this project"
