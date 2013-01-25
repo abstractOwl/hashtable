@@ -21,7 +21,8 @@ int main()
 		} else if (command == "delete") {
 			hashTable.remove(inval);
 		} else if (command == "find") {
-			hashTable.find(inval);
+			std::cout << (hashTable.find(inval) == NULL ?
+				"item not found" : "item found") << std::endl;
 		} else {
 			std::cout << "invalid command" << std::endl;
 		}
