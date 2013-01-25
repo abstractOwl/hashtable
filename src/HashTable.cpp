@@ -80,14 +80,12 @@ std::string* HashTable::find(std::string key)
 
 	// Check whether exists
 	if (curr == NULL) {
-		std::cout << "item not found" << std::endl;
 		return NULL;
 	}
 
 	// Search for key
 	while (curr != NULL) {
 		if (curr->key == key) {
-			std::cout << "item found" << std::endl;
 			return &curr->value;
 		}
 		curr = curr->next;
